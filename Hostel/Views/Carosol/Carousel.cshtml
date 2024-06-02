@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Hostel.Carosol>
+
+@{
+    ViewBag.Title = "Carosol";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @for (var i = 0; i < Model.Count(); i++)
+        {
+            <li data-target="#myCarousel" data-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
+        }
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        @foreach (var slide in Model)
+        {
+            <div class="carousel-item @(Model.ToList().IndexOf(slide) == 0 ? "active" : "")">
+                <img src="@Url.Content(slide.ImageUrl)" alt="@slide.Caption">
+                <div class="carousel-caption">
+                    <h3>@slide.Caption</h3>
+                    <p>@slide.Description</p>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>

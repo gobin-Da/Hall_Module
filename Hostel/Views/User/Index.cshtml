@@ -1,0 +1,81 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        function validation() {
+            var username = document.getElementById("username").value;
+            if (username == "") {
+                document.getElementById("message").innerHTML = '<div class="alert alert-danger"><strong>Oops!!</strong> Username cannot not be empty.</div>';
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+       
+    </script>
+    <style>
+        body {
+            font-family: Arial;
+            margin-top: 50px;
+            background-color:#f2f2f2;
+        }
+
+    </style>
+    <title>Index</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4 text-center">
+
+                <img src="~/Uploads/Logos/RMSTU_logo.png" class="img-thumbnail" alt="logo" width="200" height="170" style="background: #f2f2f2; border: none;" />
+                <h1 class="text-primary">RMSTU HALL</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+
+                <div class="panel panel-info">
+                    <div class="panel-heading"><strong>LOGIN</strong></div>
+
+                    <div class="panel-body">
+                        <form class="form" method="post" id="form" onsubmit="return validation()">
+                            <div class="form-group has-feedback">
+                                <input type="text" id="username" name="username" placeholder="Username" class="form-control" value="@ViewBag.username" />
+                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input type="password" name="password" placeholder="Password" class="form-control" />
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                            </div>
+                            <button id="btnSubmit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="pull-right" >
+                        <li style="color:white; text-decoration:none; font-size: 18px; border: 1px solid blue; padding: 5px;"><a href="~/Home/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    </ul>
+                </div>
+
+                <div id="message">
+                    @Html.Raw(ViewBag.message)
+                </div>
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+</body>
+</html>

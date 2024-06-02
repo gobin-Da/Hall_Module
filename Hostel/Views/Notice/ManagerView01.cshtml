@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Hostel.Notice>
+
+@{
+    ViewBag.Title = "ManagerView01";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<h2>Notices</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            <a href="@Html.DisplayFor(modelItem => item.Description)">@Html.DisplayFor(modelItem => item.Description) </a>
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+           
+        </td>
+    </tr>
+}
+
+</table>
